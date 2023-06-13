@@ -6,7 +6,7 @@ export const styles=StyleSheet.create({
         alignItems:"center",
         justifyContent:"center",
         marginTop:30,
-        color:"#F8F0FA",
+        backgroundColor: "#F8F0FA",
     },
     input:{
         width:"100%",

@@ -17,7 +17,7 @@ const UserGuestScreen=()=> {
 
   return (
     <ScrollView
-    contentContainerStyle={{flex:1, justifyContent:"center", backgroundColor: "#F8F0FA"}}
+    contentContainerStyle={{flex:1, justifyContent:"center"}}
     >
       <Image 
       source={require ("../../../../assets/img/login.png")}
