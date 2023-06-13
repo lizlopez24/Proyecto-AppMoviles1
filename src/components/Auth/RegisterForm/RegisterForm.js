@@ -7,7 +7,7 @@ import {initialValues} from "./RegisterForm.data";
 import { validationSchema } from './RegisterForm.data';
 import {getAuth, createUserWithEmailAndPassword} from "firebase/auth"
 import { useNavigation } from '@react-navigation/native';
-import { screen } from '../../utils/screenName';
+import { screen } from '../../../utils/screenName';
 import  Toast from 'react-native-toast-message';
 
 const RegisterForm= () => {
