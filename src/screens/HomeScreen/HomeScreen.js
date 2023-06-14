@@ -14,8 +14,6 @@ const HomeScreen=()=> {
         <Text style={styles.description}>ChocoPeca es un emprendimiento dedicado a la elaboración de pasteles personalizados y chocolates artesanales para toda ocasion. </Text>
         <Text style={styles.description}>Hechos con ingredientes naturales y de la mejor calidad</Text>
       </View>
-      <Text style={styles.title}>Historia</Text>
-      <Text> </Text>
     </ScrollView>
   )
 };

@@ -29,5 +29,20 @@ export const styles=StyleSheet.create({
         textAlign:"left",
         marginBottom:20,
         marginHorizontal:20,
+    },
+    amount:{
+        fontWeight:"bold",
+        fontSize:15,
+        textAlign:"center"
+    },
+    count:{
+        flexDirection:"row",
+        justifyContent:"space-evenly",
+        alignItems:"center",
+        marginBottom: 10,
+    },
+    btnCount:{
+        backgroundColor:"white",
     }
+
 });
