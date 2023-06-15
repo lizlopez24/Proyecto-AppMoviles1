@@ -1,12 +1,16 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import { View, Text, useAnimatedValue } from 'react-native'
 import { Image } from '@rneui/themed';
 import { styles } from './DetailProduct.styles';
 import { ScrollView } from 'react-native';
 import { Button } from '@rneui/themed';
+import Toast from 'react-native-toast-message';
+import GlobalContext from '../../components/Global/GlobalContext';
 
 const DetailProductScreen=({route})=> {
     const product=route.params;
+
+    const [productCart, addCart]=useContext(GlobalContext);
   
     const [count, setCount]=useState(0);
     const countClick=()=>{
@@ -16,14 +20,23 @@ const DetailProductScreen=({route})=> {
       setCount(count+1)
     };
 
-    const[cartProduct, setCartProduct]=useState([]);
 
     const addList=()=>{
-      setCartProduct(cartProduct.push(product))
-      console.log(cartProduct)
+        if(count===0){
+          Toast.show({
+            type:"error",
+            text1:"No se puede agregar",
+            text2:"Cantidad en 0",
+          })
+        }else{
+          product.totalCount=count;
+          addCart({product})
+          Toast.show({
+            text1:"Producto agregado exitosamente"
+          })
+        }
     };
     
-
   return (
     <ScrollView style={styles.content}>
     <View >
@@ -50,6 +63,7 @@ const DetailProductScreen=({route})=> {
     <View>
       <Button 
       title="Agregar al carrito" 
+      buttonStyle={styles.btnStyle}
       onPress={addList}
       />
     </View>

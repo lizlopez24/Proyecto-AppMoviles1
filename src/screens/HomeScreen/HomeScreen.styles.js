@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 export const styles=StyleSheet.create({
     viewBody:{
-        backgroundColor: "#F8F0FA"
+        backgroundColor: "white"
     },
     description:{
         textAlign:"center",
@@ -15,7 +15,7 @@ export const styles=StyleSheet.create({
         height:300,
         width:"100%",
         marginBottom:40,
-        marginTop:20,
+        marginTop:30,
     },
     title:{
         fontWeight:"bold",

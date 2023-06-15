@@ -43,6 +43,10 @@ export const styles=StyleSheet.create({
     },
     btnCount:{
         backgroundColor:"white",
+    },
+    btnStyle:{
+        backgroundColor:"#F188EA",
+        borderRadius: 20,
+        marginHorizontal: 60,
     }
-
 });

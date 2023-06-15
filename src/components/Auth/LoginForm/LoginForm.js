@@ -5,19 +5,39 @@ import { styles } from './LoginForm.styles';
 import { useFormik } from 'formik';
 import { initialValues } from './LoginForm.data';
 import { validationSchema } from './LoginForm.data';
+import {getAuth, signInWithEmailAndPassword} from "firebase/auth";
+import Toast from 'react-native-toast-message';
+import { screen } from '../../../utils/screenName';
+import { useNavigation } from '@react-navigation/native';
 
 const LoginForm=()=> {
     const [showPassword, setShowPassword]=useState(false);
+
+    const navigation=useNavigation();
 
     const formik=useFormik({
         initialValues:initialValues(),
         validationSchema:validationSchema(),
         validateOnChange:false,
-        onSubmit:(formValue)=>{
-            console.log("Formulario");
-            console.group(formValue)
+        onSubmit:async (formValue)=>{
+            try{
+              const auth=getAuth();
+              await signInWithEmailAndPassword(
+                auth,
+                formValue.email,
+                formValue.password,
+              );
+              navigation.navigate(screen.account.account);
+            }catch(error){
+              Toast.show({
+                type:"error",
+                position:"top",
+                text1:"Usuario o contraseña incorrecta",
+                text2:"Inténtelo de nuevo"
+              })
+            }
         }
-    })
+    });
 
     const showHiddenPassword=()=>{
         setShowPassword(!showPassword);
@@ -40,6 +60,7 @@ const LoginForm=()=> {
       <Input
         placeholder='Contraseña'
         containerStyle={styles.input}
+        secureTextEntry={showPassword ? false : true}
         rightIcon={
         <Icon 
         type='material-community' 
@@ -55,6 +76,7 @@ const LoginForm=()=> {
       containerStyle={styles.btnContainer}
       buttonStyle={styles.btnLogin}
       onPress={formik.handleSubmit}
+      loading={formik.isSubmitting}
       />
     </View>
   )

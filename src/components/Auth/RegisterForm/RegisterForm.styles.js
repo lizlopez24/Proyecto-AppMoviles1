@@ -19,6 +19,8 @@ export const styles=StyleSheet.create({
         marginTop:20,
     },
     btnRegister:{
+        borderRadius: 20,
+        marginHorizontal: 40,
         backgroundColor:"#F188EA",
     }
 

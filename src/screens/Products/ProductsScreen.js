@@ -1,9 +1,9 @@
 import React from "react";
-import { View, Text, ScrollView } from "react-native";
+import { Text, ScrollView } from "react-native";
 import { Avatar, ListItem } from '@rneui/themed';
 import { useNavigation } from "@react-navigation/native";
 import { screen } from "../../utils/screenName";
-import { image } from './DetailProduct.styles';
+import { styles } from "../CartScreen.styles";
 
 const ProductsScreen=()=>{
     const navigation=useNavigation();
@@ -84,7 +84,8 @@ const ProductsScreen=()=>{
     ];
 
     return(
-        <ScrollView>
+        <ScrollView backgroundColor="white">
+            <Text style={styles.title}>Productos disponibles</Text>
             {products.map((product)=>{
                 return(
                     <ListItem key={product.id} onPress={()=>navigation.navigate(screen.products.detailProduct, product)}>
